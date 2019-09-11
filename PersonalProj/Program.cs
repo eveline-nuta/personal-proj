@@ -7,7 +7,6 @@ namespace PersonalProj
         static void Main(string[] args)
         {
             ListGenerator.Generate().ParseToTuple().Filter().ParseToString().Print();
-
         }
     }
 }

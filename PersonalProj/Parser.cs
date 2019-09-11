@@ -6,34 +6,19 @@ namespace PersonalProj
 {
     public static class Parser
     {
-        public static List<Tuple<int, int>> ParseToTuple(this List<int> list)
+        public static IEnumerable<(int, int)> ParseToTuple(this IEnumerable<int> list)
         {
-            var tuples = new List<Tuple<int, int>>();
-            //doing the same thing twice
-            foreach (var item in list.Select((value, index) => (value, index)))
-            {
-                var value = item.value;
-                var index = item.index;
-
-                var tuple = new Tuple<int, int>(index, value);
-                tuples.Add(tuple);
-            }
-
-            return tuples;
+            return list.Select((value, index) => (value, index));
         }
-        public static List<Tuple<string, string>> ParseToString(this List<Tuple<int, int>> tuples)
+
+        public static IEnumerable<(string, string)> ParseToString(this IEnumerable<(int, int)> tuples)
         {
-            var parsedTuples = new List<Tuple<string, string>>();
 
             foreach (var tuple in tuples)
             {
-                var parsedTuple = new Tuple<string, string>
-                    (tuple.Item1.ToString(), tuple.Item2.ToString());
-
-                parsedTuples.Add(parsedTuple);
+                yield return (tuple.Item1.ToString(), tuple.Item2.ToString());
             }
 
-            return parsedTuples;
         }
     }
 }

@@ -7,9 +7,10 @@ namespace PersonalProj
 {
     public static class ListFilter
     {
-        public static List<Tuple<int, int>> Filter(this List<Tuple<int, int>> tuples)
+        public static IEnumerable<(int, int)> Filter(this IEnumerable<(int, int)> tuples)
         {
-            return tuples.Where(t => t.Item1 % 3 == 0 && t.Item2 % 5 == 0)
+
+           return tuples.Where(t => t.Item1 % 3 != 0 && t.Item2 % 5 != 0)
                          .Skip(20).ToList();
         }
     }

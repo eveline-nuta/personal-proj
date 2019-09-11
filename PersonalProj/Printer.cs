@@ -6,9 +6,9 @@ namespace PersonalProj
 {
     public static class Printer
     {
-        public static void Print(this List<Tuple<string, string>> result)
+        public static void Print(this IEnumerable<(string, string)> result)
         {
-            foreach (Tuple<string, string> tuple in result)
+            foreach (var tuple in result)
             {
                 Console.WriteLine(tuple.Item1 + "--" + tuple.Item2);
             }
